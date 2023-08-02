@@ -1,6 +1,8 @@
-﻿namespace Dapper_.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Dapper_.Models
 {
-	public class Company
+    public class Company
 	{
 		public int CompanyId { get; set; }
 		public string Name { get; set; }
@@ -9,5 +11,6 @@
 		public string City { get; set; }
 		public string State { get; set; }
 		public string PostalCode { get; set; }
-	}
+        public virtual List<Employee>? Employees { get; set; }
+    }
 }

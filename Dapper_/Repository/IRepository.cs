@@ -8,7 +8,7 @@ namespace Dapper_.Repository
 		{
 			Task<T> Find(int id);
 			T Add(T entity);
-			Company Update(T entity);
+			T Update(T entity);
 			void Remove(int id);
 			List<T> GetAll();
 		}

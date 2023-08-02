@@ -1,9 +1,9 @@
 using Dapper_.Data;
+using Dapper_.Models;
 using Dapper_.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using static Dapper_.Repository.IRepository;
-using Dapper_.Models;
 
 namespace Dapper_
 {
@@ -21,6 +21,7 @@ namespace Dapper_
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 			builder.Services.AddControllersWithViews();
 			builder.Services.AddScoped<IRepository<Company>, CompanyRepository>();
+			builder.Services.AddScoped<IRepository<Employee>, EmployeeRepository>();
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
