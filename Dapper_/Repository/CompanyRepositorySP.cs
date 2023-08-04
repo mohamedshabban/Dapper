@@ -32,7 +32,7 @@ namespace Dapper_.Repository
 				parameters.Add("@City", entity.City);
 				parameters.Add("@State", entity.State);
 				parameters.Add("@PostalCode", entity.PostalCode);
-				parameters.Add("@CompanyId", entity.CompanyId, DbType.Int32,direction: ParameterDirection.Output);
+				parameters.Add("@CompanyId", 0, DbType.Int32,direction: ParameterDirection.Output);
 				_db.Execute("usp_AddCompany",parameters,commandType:CommandType.StoredProcedure);
 				entity.CompanyId = parameters.Get<int>("@CompanyId"); 
 				return entity;
@@ -50,17 +50,23 @@ namespace Dapper_.Repository
 
 			public void Remove(int id)
 			{
-				_db.Execute("Delete from Companies where CompanyId=@CompanyId",new {@CompanyId=id});
+				_db.Execute("usp_RemoveCompany", new {@CompanyId=id},commandType:CommandType.StoredProcedure);
 			}
 
 			public Company Update(Company entity)
 			{
-				var query = "UPDATE Companies SET Name = @Name, Address = @Address, City = @City, State = @State," +
-					" PostalCode = @PostalCode WHERE CompanyId = @CompanyId;";
-				_db.Execute(query, entity);
-				return entity;
+                //Dyanmic Parameters
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Name", entity.Name);
+                parameters.Add("@Address", entity.Address);
+                parameters.Add("@City", entity.City);
+                parameters.Add("@State", entity.State);
+                parameters.Add("@PostalCode", entity.PostalCode);
+                parameters.Add("@CompanyId", entity.CompanyId, DbType.Int32);
+                _db.Execute("usp_AddCompany", parameters, commandType: CommandType.StoredProcedure);
+                return entity;
 
-			}
+            }
 		}
 	}
 }
