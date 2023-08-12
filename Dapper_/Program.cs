@@ -21,6 +21,7 @@ namespace Dapper_
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 			builder.Services.AddControllersWithViews();
 			builder.Services.AddScoped<IRepository<Company>, CompanyRepositorySP>();
+			builder.Services.AddScoped<IRepository<Company>, CompanyRepositoryContrib>();
 			builder.Services.AddScoped<IRepository<Employee>, EmployeeRepository>();
 			var app = builder.Build();
 
