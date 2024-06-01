@@ -20,7 +20,9 @@ namespace Dapper
 			builder.Services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 			builder.Services.AddControllersWithViews();
-			builder.Services.AddScoped<IRepository<Company>, CompanyRepository>();
+			builder.Services.AddScoped<IRepository<Company>, CompanyRepositorySP>();
+			builder.Services.AddScoped<IRepository<Company>, CompanyRepositoryContrib>();
+			builder.Services.AddScoped<IRepository<Employee>, EmployeeRepository>();
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
