@@ -1,8 +1,8 @@
-﻿using Dapper_.Models;
+﻿using Dapper.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Dapper_.Controllers
+namespace Dapper.Controllers
 {
 	public class HomeController : Controller
 	{

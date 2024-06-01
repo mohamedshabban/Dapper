@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Dapper.Models;
+using Dapper.Repository;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Dapper_.Data;
-using Dapper_.Models;
-using static Dapper_.Repository.IRepository;
 
-namespace Dapper_.Controllers
+namespace Dapper.Controllers
 {
     public class CompaniesController : Controller
     {
@@ -23,9 +17,9 @@ namespace Dapper_.Controllers
         // GET: Companies
         public async Task<IActionResult> Index()
         {
-              return _context.GetAll() != null ? 
-                          View(_context.GetAll()) :
-                          Problem("Entity set 'ApplicationDbContext.Companies'  is null.");
+            return _context.GetAll() != null ?
+                        View(_context.GetAll()) :
+                        Problem("Entity set 'ApplicationDbContext.Companies'  is null.");
         }
 
         // GET: Companies/Details/5
@@ -102,7 +96,7 @@ namespace Dapper_.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (await _context.Find(company.CompanyId)!=null)
+                    if (await _context.Find(company.CompanyId) != null)
                     {
                         return NotFound();
                     }
@@ -146,7 +140,7 @@ namespace Dapper_.Controllers
             if (company != null)
             {
                 _context.Remove(id);
-            }           
+            }
             return RedirectToAction(nameof(Index));
         }
 

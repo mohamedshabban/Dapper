@@ -1,8 +1,8 @@
-﻿using Dapper_.Models;
+﻿using Dapper.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
-namespace Dapper_.Data
+namespace Dapper.Data
 {
 	public class ApplicationDbContext : DbContext
 	{

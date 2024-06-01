@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Dapper_.Models
+namespace Dapper.Models
 {
 	public class ErrorViewModel
 	{

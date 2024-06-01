@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Dapper_.Migrations
+namespace Dapper.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

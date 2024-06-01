@@ -1,11 +1,11 @@
-using Dapper_.Data;
-using Dapper_.Repository;
+using Dapper.Data;
+using Dapper.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using static Dapper_.Repository.IRepository;
-using Dapper_.Models;
+using static Dapper.Repository.IRepository;
+using Dapper.Models;
 
-namespace Dapper_
+namespace Dapper
 {
 	public class Program
 	{
